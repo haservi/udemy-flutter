@@ -3,9 +3,20 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: StartScreen(),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(215, 156, 192, 191),
+                Color.fromARGB(155, 27, 100, 114)
+              ],
+            ),
+          ),
+          child: const StartScreen(),
+        ),
       ),
     ),
   );
