@@ -40,7 +40,7 @@ class StartScreen extends StatelessWidget {
               foregroundColor: Colors.white,
             ),
             icon: const Icon(Icons.ac_unit_sharp),
-            label: const Text('Start Quiz'),
+            label: const Text('Start Quiz1'),
           )
         ],
       ),
