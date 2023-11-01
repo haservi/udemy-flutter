@@ -21,25 +21,19 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(currentQuestion.text),
+          Text(
+            currentQuestion.text,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+          ),
           const SizedBox(
             height: 30,
           ),
-          AnswerButton(
-            currentQuestion.answers[0],
-            () {},
-          ),
-          AnswerButton(
-            currentQuestion.answers[1],
-            () {},
-          ),
-          AnswerButton(
-            currentQuestion.answers[2],
-            () {},
-          ),
-          AnswerButton(
-            currentQuestion.answers[3],
-            () {},
+          ...currentQuestion.answers.map(
+            (answer) {
+              return AnswerButton(answer, () {});
+            },
           ),
         ],
       ),
