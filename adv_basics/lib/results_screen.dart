@@ -24,6 +24,13 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummaryData();
+    final numberTotalQuestions = questions.length;
+    // 일치하는 개수를 출력
+    final numberCorrectQuestions = summaryData.where((element) {
+      return element['user_answer'] == element['correct_answer'];
+    }).length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -31,7 +38,8 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('test'),
+            Text(
+                '문제 결과 총 문제: $numberTotalQuestions, 정답: $numberCorrectQuestions'),
             const SizedBox(height: 30),
             QuestionsSummary(getSummaryData()),
             const SizedBox(height: 30),
