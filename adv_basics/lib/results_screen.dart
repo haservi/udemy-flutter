@@ -7,7 +7,7 @@ class ResultsScreen extends StatelessWidget {
 
   final List<String> chosenAnswers;
 
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     final List<Map<String, Object>> summary = [];
 
     for (var i = 0; i < chosenAnswers.length; i++) {
@@ -24,12 +24,11 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final summaryData = getSummaryData();
     final numberTotalQuestions = questions.length;
     // 일치하는 개수를 출력
-    final numberCorrectQuestions = summaryData.where((element) {
-      return element['user_answer'] == element['correct_answer'];
-    }).length;
+    final numberCorrectQuestions = summaryData
+        .where((data) => data['user_answer'] == data['correct_answer'])
+        .length;
 
     return SizedBox(
       width: double.infinity,
@@ -41,7 +40,7 @@ class ResultsScreen extends StatelessWidget {
             Text(
                 '문제 결과 총 문제: $numberTotalQuestions, 정답: $numberCorrectQuestions'),
             const SizedBox(height: 30),
-            QuestionsSummary(getSummaryData()),
+            QuestionsSummary(summaryData),
             const SizedBox(height: 30),
             TextButton(
               onPressed: () {},
