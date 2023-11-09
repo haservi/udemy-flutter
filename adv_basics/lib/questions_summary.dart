@@ -1,3 +1,4 @@
+import 'package:adv_basics/questions_summary/question_identifier.dart';
 import 'package:flutter/material.dart';
 
 class QuestionsSummary extends StatelessWidget {
@@ -14,11 +15,10 @@ class QuestionsSummary extends StatelessWidget {
           children: summaryData.map(
             (data) {
               return Row(children: [
-                Text(
-                  ((data['question_index'] as int) + 1).toString(),
-                  style: const TextStyle(
-                    fontSize: 18,
-                  ),
+                QuestionIdentifier(
+                  questionIndex: data['question_index'] as int,
+                  isCorrectAnswer:
+                      data['user_answer'] == data['correct_answer'],
                 ),
                 Expanded(
                   child: Column(children: [
