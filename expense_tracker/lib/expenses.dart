@@ -12,11 +12,20 @@ class Expenses extends StatefulWidget {
 class _Expenses extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.black,
+    return const Scaffold(
+      body: Column(
+        children: [
+          Text(
+            'The chart',
+            style: TextStyle(color: Colors.white),
+          ),
+          Text(
+            'Expense list...',
+            style: TextStyle(color: Colors.white),
+          ),
+        ],
       ),
+      backgroundColor: Colors.black,
     );
   }
 }
