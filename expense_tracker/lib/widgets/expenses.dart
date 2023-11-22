@@ -27,11 +27,27 @@ class _Expenses extends State<Expenses> {
     ),
   ];
 
+  void _openAddExpenseOverlay() {
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Flutter 확장 기능 테스트',
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          )
+        ],
+      ),
       body: Column(
         children: [
+          // TODO: 여기에 툴바를 추가
           const Text(
             'The chart',
           ),
