@@ -28,7 +28,10 @@ class _Expenses extends State<Expenses> {
   ];
 
   void _openAddExpenseOverlay() {
-    
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const Text('모달 바텀 시트'),
+    );
   }
 
   @override
@@ -40,7 +43,7 @@ class _Expenses extends State<Expenses> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: _openAddExpenseOverlay,
             icon: const Icon(Icons.add),
           )
         ],
