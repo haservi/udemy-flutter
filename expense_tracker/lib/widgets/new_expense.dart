@@ -20,6 +20,11 @@ class _NewExpenseState extends State<NewExpense> {
     super.dispose();
   }
 
+  void clear() {
+    _titleController.clear();
+    _amountController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,7 +50,7 @@ class _NewExpenseState extends State<NewExpense> {
           Row(
             children: [
               TextButton(
-                onPressed: () {},
+                onPressed: clear,
                 child: const Text('Cancel'),
               ),
               ElevatedButton(
