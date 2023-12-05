@@ -13,9 +13,9 @@ class NewExpense extends StatefulWidget {
 }
 
 class _NewExpenseState extends State<NewExpense> {
-  final _titleController = TextEditingController();
-  final _amountController = TextEditingController();
-  DateTime? _selectedDate;
+  final _titleController = TextEditingController(text: '샘플 초기값');
+  final _amountController = TextEditingController(text: '100');
+  DateTime? _selectedDate = DateTime.now();
   Category _selectedCategory = Category.leisure;
 
   void _presentDatePicker() async {
