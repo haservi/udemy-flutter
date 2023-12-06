@@ -98,7 +98,6 @@ class _Expenses extends State<Expenses> {
           Expanded(child: mainContent),
         ],
       ),
-      backgroundColor: Colors.white,
     );
   }
 }
