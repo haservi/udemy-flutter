@@ -95,9 +95,6 @@ class _Expenses extends State<Expenses> {
       body: Column(
         children: [
           // TODO: 여기에 툴바를 추가
-          const Text(
-            'The chart',
-          ),
           Expanded(child: mainContent),
         ],
       ),
