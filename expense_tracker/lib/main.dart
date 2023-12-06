@@ -29,10 +29,10 @@ void main() {
           ),
         ),
         textTheme: ThemeData().textTheme.copyWith(
-              titleLarge: TextStyle(
+              titleLarge: const TextStyle(
                 fontWeight: FontWeight.normal,
-                color: kColorScheme.secondaryContainer,
-                fontSize: 14,
+                color: Colors.black,
+                fontSize: 16,
               ),
             ),
       ),
