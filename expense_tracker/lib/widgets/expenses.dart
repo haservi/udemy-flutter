@@ -1,4 +1,5 @@
 import 'package:expense_tracker/models/expense.dart';
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +23,15 @@ class _Expenses extends State<Expenses> {
     ),
     Expense(
       title: '영화 보기',
-      amount: 40,
+      amount: 25,
       date: DateTime.now(),
       category: Category.leisure,
+    ),
+    Expense(
+      title: '음식 먹기',
+      amount: 30,
+      date: DateTime.now(),
+      category: Category.food,
     ),
   ];
 
@@ -95,9 +102,38 @@ class _Expenses extends State<Expenses> {
       body: Column(
         children: [
           // TODO: 여기에 툴바를 추가
+          Chart(expenses: _registeredExpenses),
           Expanded(child: mainContent),
         ],
       ),
     );
+  }
+}
+
+class ExpenseBucket {
+  const ExpenseBucket({
+    required this.category,
+    required this.expenses,
+  });
+
+  final Category category;
+  final List<Expense> expenses;
+
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+      : expenses = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+
+  double get totalExpenses {
+    double sum = 0;
+
+    // for (var i = 0; i < expenses.length; i++) {
+    //   sum += expenses[i].amount;
+    // }
+    // foreach 라고 생각됨
+    for (final expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
   }
 }
