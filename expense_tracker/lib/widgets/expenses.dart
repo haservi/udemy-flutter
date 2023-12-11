@@ -76,6 +76,9 @@ class _Expenses extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    // 실제 화면의 크기를 확인할 수 있음
+    final width = MediaQuery.of(context).size.width;
+
     Widget mainContent = const Center(
       child: Text('항목을 추가해주세요.'),
     );
@@ -99,13 +102,23 @@ class _Expenses extends State<Expenses> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          // TODO: 여기에 툴바를 추가
-          Chart(expenses: _registeredExpenses),
-          Expanded(child: mainContent),
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                // TODO: 여기에 툴바를 추가
+                Chart(expenses: _registeredExpenses),
+                Expanded(child: mainContent),
+              ],
+            )
+          : Row(
+              children: [
+                // TODO: 여기에 툴바를 추가
+                Expanded(
+                  child: Chart(expenses: _registeredExpenses),
+                ),
+                Expanded(child: mainContent),
+              ],
+            ),
     );
   }
 }
@@ -127,10 +140,6 @@ class ExpenseBucket {
   double get totalExpenses {
     double sum = 0;
 
-    // for (var i = 0; i < expenses.length; i++) {
-    //   sum += expenses[i].amount;
-    // }
-    // foreach 라고 생각됨
     for (final expense in expenses) {
       sum += expense.amount;
     }
