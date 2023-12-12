@@ -37,6 +37,7 @@ class _Expenses extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true, // 전체 화면 변경
       context: context,
       builder: (ctx) => NewExpense(onAddExpense: _addExpense),
