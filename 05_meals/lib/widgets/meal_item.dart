@@ -11,13 +11,14 @@ class MealItem extends StatelessWidget {
 
   final Meal meal;
 
+  /// 첫 글자만 대문자 변경 위한 함수
   String get complexityText {
-    return meal.complexity.name[0].toLowerCase() +
+    return meal.complexity.name[0].toUpperCase() +
         meal.complexity.name.substring(1);
   }
 
   String get affordabilityText {
-    return meal.affordability.name[0].toLowerCase() +
+    return meal.affordability.name[0].toUpperCase() +
         meal.affordability.name.substring(1);
   }
 
@@ -70,7 +71,7 @@ class MealItem extends StatelessWidget {
                       children: [
                         MealItemTrait(
                           icon: Icons.schedule,
-                          label: '${meal.duration} min',
+                          label: '${meal.duration}min',
                         ),
                         const SizedBox(width: 12),
                         MealItemTrait(
