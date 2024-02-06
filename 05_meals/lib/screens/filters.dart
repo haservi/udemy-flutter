@@ -10,7 +10,10 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FiltersScreen> {
-  var _glutenFreeFilterSet = false;
+  var _isSetting1 = false;
+  var _isSetting2 = false;
+  var _isSetting3 = false;
+  var _isSetting4 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,30 +30,98 @@ class _FilterScreenState extends State<FiltersScreen> {
       //     );
       //   },
       // ),
-      body: Column(children: [
-        SwitchListTile(
-          value: _glutenFreeFilterSet,
-          onChanged: (isChecked) {
-            setState(() {
-              _glutenFreeFilterSet = isChecked;
-            });
-          },
-          title: Text(
-            '아무말1',
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+      body: Column(
+        children: [
+          SwitchListTile(
+            value: _isSetting1,
+            onChanged: (isChecked) {
+              setState(() {
+                _isSetting1 = isChecked;
+              });
+            },
+            title: Text(
+              '설정1',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            subtitle: Text(
+              '설정1',
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            activeColor: Theme.of(context).colorScheme.tertiary,
+            contentPadding: const EdgeInsets.only(left: 34, right: 22),
           ),
-          subtitle: Text(
-            '아무말2',
-            style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+          SwitchListTile(
+            value: _isSetting2,
+            onChanged: (isChecked) {
+              setState(() {
+                _isSetting2 = isChecked;
+              });
+            },
+            title: Text(
+              '설정2',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            subtitle: Text(
+              '설정2',
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            activeColor: Theme.of(context).colorScheme.tertiary,
+            contentPadding: const EdgeInsets.only(left: 34, right: 22),
           ),
-          activeColor: Theme.of(context).colorScheme.tertiary,
-          contentPadding: const EdgeInsets.only(left: 34, right: 22),
-        ),
-      ]),
+          SwitchListTile(
+            value: _isSetting3,
+            onChanged: (isChecked) {
+              setState(() {
+                _isSetting3 = isChecked;
+              });
+            },
+            title: Text(
+              '설정3',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            subtitle: Text(
+              '설정3',
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            activeColor: Theme.of(context).colorScheme.tertiary,
+            contentPadding: const EdgeInsets.only(left: 34, right: 22),
+          ),
+          SwitchListTile(
+            value: _isSetting4,
+            onChanged: (isChecked) {
+              setState(() {
+                _isSetting4 = isChecked;
+              });
+            },
+            title: Text(
+              '설정4',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            subtitle: Text(
+              '설정4',
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
+            activeColor: Theme.of(context).colorScheme.tertiary,
+            contentPadding: const EdgeInsets.only(left: 34, right: 22),
+          ),
+        ],
+      ),
     );
   }
 }
