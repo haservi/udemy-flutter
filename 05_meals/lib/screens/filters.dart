@@ -18,6 +18,15 @@ class _FilterScreenState extends State<FiltersScreen> {
       appBar: AppBar(
         title: const Text('필터 화면'),
       ),
+      // drawer: MainDrawer(
+      //   onSelectScreen: (item) {
+      //     Navigator.of(context).pushReplacement(
+      //       MaterialPageRoute(
+      //         builder: (ctx) => const TabsScreen(),
+      //       ),
+      //     );
+      //   },
+      // ),
       body: Column(children: [
         SwitchListTile(
           value: _glutenFreeFilterSet,
