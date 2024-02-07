@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
+enum Filter {
+  glutenFree,
+  lactoseFree,
+  vegetarian,
+  vegan,
+}
+
 class FiltersScreen extends StatefulWidget {
-  const FiltersScreen({super.key});
+  const FiltersScreen({
+    super.key,
+    required this.currentFilters,
+  });
+
+  final Map<Filter, bool> currentFilters;
 
   @override
   State<StatefulWidget> createState() {
@@ -10,10 +22,19 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FiltersScreen> {
-  var _isSetting1 = false;
-  var _isSetting2 = false;
-  var _isSetting3 = false;
-  var _isSetting4 = false;
+  var _glutenFreeFilterSet = false;
+  var _lactoseFreeFilterSet = false;
+  var _vegetarianFilterSet = false;
+  var _veganFilterSet = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _glutenFreeFilterSet = widget.currentFilters[Filter.glutenFree]!;
+    _lactoseFreeFilterSet = widget.currentFilters[Filter.lactoseFree]!;
+    _vegetarianFilterSet = widget.currentFilters[Filter.vegetarian]!;
+    _veganFilterSet = widget.currentFilters[Filter.vegan]!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,97 +51,122 @@ class _FilterScreenState extends State<FiltersScreen> {
       //     );
       //   },
       // ),
-      body: Column(
-        children: [
-          SwitchListTile(
-            value: _isSetting1,
-            onChanged: (isChecked) {
-              setState(() {
-                _isSetting1 = isChecked;
-              });
-            },
-            title: Text(
-              '설정1',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
+
+      // body: WillPopScope(
+      //   onWillPop: () async {
+      //     Navigator.of(context).pop({
+      //       Filter.glutenFree: _glutenFreeFilterSet,
+      //       Filter.lactoseFree: _lactoseFreeFilterSet,
+      //       Filter.vegetarian: _vegetarianFilterSet,
+      //       Filter.vegan: _veganFilterSet,
+      //     });
+      //     return false;
+      //   },
+      body: PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) async {
+          if (didPop) {
+            return;
+          }
+          Navigator.of(context).pop({
+            Filter.glutenFree: _glutenFreeFilterSet,
+            Filter.lactoseFree: _lactoseFreeFilterSet,
+            Filter.vegetarian: _vegetarianFilterSet,
+            Filter.vegan: _veganFilterSet,
+          });
+        },
+        child: Column(
+          children: [
+            SwitchListTile(
+              value: _glutenFreeFilterSet,
+              onChanged: (isChecked) {
+                setState(() {
+                  _glutenFreeFilterSet = isChecked;
+                });
+              },
+              title: Text(
+                '글루텐 프리',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              subtitle: Text(
+                '글루텐 프리',
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              activeColor: Theme.of(context).colorScheme.tertiary,
+              contentPadding: const EdgeInsets.only(left: 34, right: 22),
             ),
-            subtitle: Text(
-              '설정1',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
+            SwitchListTile(
+              value: _lactoseFreeFilterSet,
+              onChanged: (isChecked) {
+                setState(() {
+                  _lactoseFreeFilterSet = isChecked;
+                });
+              },
+              title: Text(
+                '유당 무첨가',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              subtitle: Text(
+                '유당 무첨가',
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              activeColor: Theme.of(context).colorScheme.tertiary,
+              contentPadding: const EdgeInsets.only(left: 34, right: 22),
             ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: _isSetting2,
-            onChanged: (isChecked) {
-              setState(() {
-                _isSetting2 = isChecked;
-              });
-            },
-            title: Text(
-              '설정2',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
+            SwitchListTile(
+              value: _vegetarianFilterSet,
+              onChanged: (isChecked) {
+                setState(() {
+                  _vegetarianFilterSet = isChecked;
+                });
+              },
+              title: Text(
+                '채식주의자',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              subtitle: Text(
+                '채식주의자',
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              activeColor: Theme.of(context).colorScheme.tertiary,
+              contentPadding: const EdgeInsets.only(left: 34, right: 22),
             ),
-            subtitle: Text(
-              '설정2',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
+            SwitchListTile(
+              value: _veganFilterSet,
+              onChanged: (isChecked) {
+                setState(() {
+                  _veganFilterSet = isChecked;
+                });
+              },
+              title: Text(
+                '비건',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              subtitle: Text(
+                '비건',
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground,
+                    ),
+              ),
+              activeColor: Theme.of(context).colorScheme.tertiary,
+              contentPadding: const EdgeInsets.only(left: 34, right: 22),
             ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: _isSetting3,
-            onChanged: (isChecked) {
-              setState(() {
-                _isSetting3 = isChecked;
-              });
-            },
-            title: Text(
-              '설정3',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            subtitle: Text(
-              '설정3',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-          SwitchListTile(
-            value: _isSetting4,
-            onChanged: (isChecked) {
-              setState(() {
-                _isSetting4 = isChecked;
-              });
-            },
-            title: Text(
-              '설정4',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            subtitle: Text(
-              '설정4',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-            ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
-            contentPadding: const EdgeInsets.only(left: 34, right: 22),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
