@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals/models/meal.dart';
+import 'package:meals/provider/favorite_meals_provider.dart';
 import 'package:meals/provider/meals_provider.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
@@ -25,33 +25,34 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
-  final List<Meal> _favoriteMeals = [];
+
+  // final List<Meal> _favoriteMeals = [];
   Map<Filter, bool> _selectedFilters = kInitialFilters;
 
-  void _showInfoMessage(String message) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-      ),
-    );
-  }
+  // void _showInfoMessage(String message) {
+  //   ScaffoldMessenger.of(context).clearSnackBars();
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       content: Text(message),
+  //     ),
+  //   );
+  // }
 
-  void _toggleMealFavoriteStatus(Meal meal) {
-    final isExist = _favoriteMeals.contains(meal);
-
-    if (isExist) {
-      setState(() {
-        _favoriteMeals.remove(meal);
-      });
-      _showInfoMessage('즐겨찾기 취소!');
-    } else {
-      setState(() {
-        _favoriteMeals.add(meal);
-        _showInfoMessage('즐겨찾기 추가!');
-      });
-    }
-  }
+  // void _toggleMealFavoriteStatus(Meal meal) {
+  //   final isExist = _favoriteMeals.contains(meal);
+  //
+  //   if (isExist) {
+  //     setState(() {
+  //       _favoriteMeals.remove(meal);
+  //     });
+  //     _showInfoMessage('즐겨찾기 취소!');
+  //   } else {
+  //     setState(() {
+  //       _favoriteMeals.add(meal);
+  //       _showInfoMessage('즐겨찾기 추가!');
+  //     });
+  //   }
+  // }
 
   void _selectPage(int index) {
     setState(() {
@@ -96,15 +97,15 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     }).toList();
 
     Widget activePage = CategorieScreen(
-      onToggleFavorite: _toggleMealFavoriteStatus,
       availableMeals: availableMeals,
     );
     var activePageTitle = '요리목록';
 
     if (_selectedPageIndex == 1) {
+      final favoriteMeals = ref.watch(favoriteMealsProvider);
+
       activePage = MealsScreen(
-        meals: _favoriteMeals,
-        onToggleFavorite: _toggleMealFavoriteStatus,
+        meals: favoriteMeals,
       );
       activePageTitle = '좋아하는 음식';
     }
