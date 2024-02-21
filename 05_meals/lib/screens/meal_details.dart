@@ -13,6 +13,9 @@ class MealDetails extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final favoriteMeals = ref.watch(favoriteMealsProvider);
+
+    final isFavorite = favoriteMeals.contains(meal);
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
@@ -30,7 +33,9 @@ class MealDetails extends ConsumerWidget {
                 ),
               );
             },
-            icon: const Icon(Icons.star),
+            icon: isFavorite == true
+                ? const Icon(Icons.star)
+                : const Icon(Icons.star_border_outlined),
           ),
         ],
       ),
