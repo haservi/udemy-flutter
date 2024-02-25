@@ -75,7 +75,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     // watch 변경
     final availableMeals = ref.watch(filteredMealsProvider);
 
-    Widget activePage = CategorieScreen(
+    Widget activePage = CategoriesScreen(
       availableMeals: availableMeals,
     );
     var activePageTitle = '요리목록';
