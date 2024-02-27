@@ -29,7 +29,7 @@ class MealDetails extends ConsumerWidget {
               ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(wasAdded ? '음식 추가' : '음식 삭제'),
+                  content: Text(wasAdded ? '즐겨찾기 추가' : '즐겨찾기 삭제'),
                 ),
               );
             },
