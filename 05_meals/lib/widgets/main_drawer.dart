@@ -14,6 +14,7 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: [
           DrawerHeader(
+            padding: const EdgeInsets.all(20),
             child: Row(
               children: [
                 Icon(
@@ -33,7 +34,6 @@ class MainDrawer extends StatelessWidget {
                 ),
               ],
             ),
-            padding: const EdgeInsets.all(20),
           ),
           ListTile(
             leading: Icon(
