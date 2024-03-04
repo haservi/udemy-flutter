@@ -19,33 +19,6 @@ class TabsScreen extends ConsumerStatefulWidget {
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
 
-  // final List<Meal> _favoriteMeals = [];
-
-  // void _showInfoMessage(String message) {
-  //   ScaffoldMessenger.of(context).clearSnackBars();
-  //   ScaffoldMessenger.of(context).showSnackBar(
-  //     SnackBar(
-  //       content: Text(message),
-  //     ),
-  //   );
-  // }
-
-  // void _toggleMealFavoriteStatus(Meal meal) {
-  //   final isExist = _favoriteMeals.contains(meal);
-  //
-  //   if (isExist) {
-  //     setState(() {
-  //       _favoriteMeals.remove(meal);
-  //     });
-  //     _showInfoMessage('즐겨찾기 취소!');
-  //   } else {
-  //     setState(() {
-  //       _favoriteMeals.add(meal);
-  //       _showInfoMessage('즐겨찾기 추가!');
-  //     });
-  //   }
-  // }
-
   void _selectPage(int index) {
     setState(() {
       _selectedPageIndex = index;
