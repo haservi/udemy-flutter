@@ -4,13 +4,10 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+[공식 문서](https://firebase.google.com/docs/flutter/setup?hl=ko&platform=ios)를 참조하여 firebase 설정을 할 수 있습니다.
 
-A few resources to get you started if this is your first Flutter project:
+firebase에 로인 상태에서 아래의 명령어를 입력하면 flutter firebase 설정을 할 수 있다.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+``` flutter
+flutterfire configure
+``
