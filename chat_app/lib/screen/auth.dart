@@ -20,7 +20,7 @@ class _AuthScreenState extends State<AuthScreen> {
   var _enteredPassword = '';
 
   void _submit() async {
-    final isValid = _form.currentState!.validate();
+    var isValid = _form.currentState!.validate();
 
     if (!isValid) {
       return;
@@ -33,11 +33,11 @@ class _AuthScreenState extends State<AuthScreen> {
     try {
       if (_isLogin) {
         print('login success');
-        final userCredentials = _firebase.signInWithEmailAndPassword(
+        var userCredentials = _firebase.signInWithEmailAndPassword(
             email: _enteredEmail, password: _enteredPassword);
         print(userCredentials.toString());
       } else {
-        final userCredentials = await _firebase.createUserWithEmailAndPassword(
+        var userCredentials = await _firebase.createUserWithEmailAndPassword(
             email: _enteredEmail, password: _enteredPassword);
         print(userCredentials.toString());
       }
@@ -130,7 +130,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                   .colorScheme
                                   .primaryContainer,
                             ),
-                            child: Text(_isLogin ? "로그인" : "회원 가입"),
+                            child: Text(_isLogin ? '로그인' : '회원 가입'),
                           ),
                           TextButton(
                             onPressed: () {
@@ -138,7 +138,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 _isLogin = !_isLogin;
                               });
                             },
-                            child: Text(_isLogin ? "계정 생성" : "로그인 하기"),
+                            child: Text(_isLogin ? '계정 생성' : '로그인 하기'),
                           )
                         ],
                       ),

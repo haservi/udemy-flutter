@@ -1,41 +1,75 @@
 linter:
   rules:
+    # 선호하는 const 생성자 사용 여부를 체크
     - prefer_const_constructors
+    # 항상 함수와 메소드의 반환 타입을 선언하는지 확인
     - always_declare_return_types
-    - always_require_non_null_named_parameters
+    # 클로저 매개변수에 타입을 지정하는 것을 피하는지 확인
     - avoid_types_on_closure_parameters
+    # 주석에 dynamic을 사용하는 것을 피하는지 확인
     - avoid_annotating_with_dynamic
+    # 문자열 내에서 이스케이프된 따옴표를 피하는지 확인
     - avoid_escaping_inner_quotes
+    # forEach 호출에서 함수 리터럴을 피하는지 확인
     - avoid_function_literals_in_foreach_calls
+    # 비공개 typedef 함수 사용을 피하는지 확인
     - avoid_private_typedef_functions
+    # 사용된 패키지나 클래스의 임포트 순서를 유지
     - combinators_ordering
+    # 흐름 제어 구조에서 중괄호 사용을 강제
     - curly_braces_in_flow_control_structures
+    # 함수나 변수의 이름을 소문자와 밑줄로 사용하는지 확인
     - lowercase_with_underscores
+    # 로컬 변수의 타입을 생략하는지 확인
     - omit_local_variable_types
+    # 오버라이드된 메소드에 @override 주석을 추가하는지 확인
     - annotate_overrides
+    # 생성자를 가장 먼저 선언하는지 확인
     - sort_constructors_first
+    # 기다리지 않은 Future 호출을 허용하지 않는지 확인
     - unawaited_futures
+    # import, export, part 지시문을 정렬하는지 확인
     - directives_ordering
+    # 불필요한 final 키워드를 제거하는지 확인
     - unnecessary_final
+    # 불필요한 괄호를 제거하는지 확인
     - unnecessary_parenthesis
+    # 조건부 URI가 존재하지 않는 경우를 검사하는지 확인
     - conditional_uri_does_not_exist
+    # 작은따옴표를 사용하는 것을 선호하는지 확인
     - prefer_single_quotes
+    # 오직 Future만 await하는지 확인
     - await_only_futures
+    # 패키지 임포트를 항상 사용하는지 확인
     - always_use_package_imports
+    # 비어있는 else 블록을 피하는지 확인
     - avoid_empty_else
+    # 주석 내의 참조를 검사하는지 확인
     - comment_references
+    # null 대신 void를 사용하는지 확인
     - prefer_void_to_null
+    # 위젯 생성자에서 key를 사용하는지 확인
     - use_key_in_widget_constructors
 
 analyzer:
   strong-mode:
+    # 명시적 형 변환을 허용하지 않음
     # implicit-casts: false
+    # 암시적 dynamic 사용을 허용하지 않음
     # implicit-dynamic: false
+
   exclude:
+    # Freezed 패키지에 의해 생성된 파일을 분석에서 제외함
     - lib/**.freezed.dart
+    # JsonSerializable 패키지에 의해 생성된 파일을 분석에서 제외함
     - lib/**.g.dart
+    # generated 디렉토리 내의 파일을 분석에서 제외함
     - lib/generated
+    # Firebase 옵션 파일을 분석에서 제외함
     - lib/firebase_options.dart
+
   errors:
+    # invalid_annotation_target 경고를 무시함
     invalid_annotation_target: ignore
+    # TODO 주석을 무시함
     todo: ignore
