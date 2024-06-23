@@ -32,8 +32,8 @@ class _AuthScreenState extends State<AuthScreen> {
     var isValid = _form.currentState!.validate();
 
     if (!isValid || _isLogin && _selectedImage == null) {
-      print(
-          'isValid: ${isValid}, isLogin: ${_isLogin}, selectedImage: ${_selectedImage}');
+      print('isValid: ${isValid}, isLogin: ${_isLogin}, selectedImage: ${_selectedImage}' +
+          ', _username: ${_enteredUsername}, _email: ${_enteredEmail}, _password: ${_enteredPassword}');
       // error 메시지
       return;
     }
