@@ -30,8 +30,6 @@ linter:
     - unawaited_futures
     # import, export, part 지시문을 정렬하는지 확인
     - directives_ordering
-    # 불필요한 final 키워드를 제거하는지 확인
-    - unnecessary_final
     # 불필요한 괄호를 제거하는지 확인
     - unnecessary_parenthesis
     # 조건부 URI가 존재하지 않는 경우를 검사하는지 확인

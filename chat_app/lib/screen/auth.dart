@@ -21,9 +21,20 @@ class _AuthScreenState extends State<AuthScreen> {
   final _form = GlobalKey<FormState>();
 
   var _isLogin = false;
-  var _enteredEmail = '';
-  var _enteredPassword = '';
-  var _enteredUsername = '';
+  final _emailController = TextEditingController(text: 'haseop@test.com');
+  final _passwordController = TextEditingController(text: 'qwer1234');
+  final _usernameController = TextEditingController(text: 'haseop');
+  var _enteredEmail = 'haseop@test.com';
+  var _enteredPassword = 'qwer1234';
+  var _enteredUsername = 'haseop';
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _usernameController.dispose();
+    super.dispose();
+  }
 
   File? _selectedImage;
   var _isAuthenticating = false;
@@ -31,8 +42,8 @@ class _AuthScreenState extends State<AuthScreen> {
   void _submit() async {
     var isValid = _form.currentState!.validate();
 
-    if (!isValid || _isLogin && _selectedImage == null) {
-      print('isValid: ${isValid}, isLogin: ${_isLogin}, selectedImage: ${_selectedImage}' +
+    if (!isValid || !_isLogin) {
+      print('validate error isValid: ${isValid}, isLogin: ${_isLogin}, selectedImage: ${_selectedImage}' +
           ', _username: ${_enteredUsername}, _email: ${_enteredEmail}, _password: ${_enteredPassword}');
       // error 메시지
       return;
@@ -123,10 +134,10 @@ class _AuthScreenState extends State<AuthScreen> {
                               _selectedImage = selectedImage;
                             }),
                           TextFormField(
+                            controller: _emailController,
                             decoration: const InputDecoration(
                               labelText: 'Email Address',
                             ),
-                            initialValue: 'test@test.com',
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
@@ -144,6 +155,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           if (!_isLogin)
                             TextFormField(
+                              controller: _usernameController,
                               decoration: const InputDecoration(
                                 labelText: 'Username',
                               ),
@@ -161,11 +173,11 @@ class _AuthScreenState extends State<AuthScreen> {
                               },
                             ),
                           TextFormField(
+                            controller: _passwordController,
                             decoration: const InputDecoration(
                               labelText: 'Password',
                             ),
                             obscureText: true,
-                            initialValue: '1234567',
                             validator: (value) {
                               if (value == null || value.trim().length < 6) {
                                 return 'Password must be at least 6 characters long.';
