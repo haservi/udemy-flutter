@@ -24,9 +24,6 @@ class _AuthScreenState extends State<AuthScreen> {
   final _emailController = TextEditingController(text: 'haseop@test.com');
   final _passwordController = TextEditingController(text: 'qwer1234');
   final _usernameController = TextEditingController(text: 'haseop');
-  var _enteredEmail = 'haseop@test.com';
-  var _enteredPassword = 'qwer1234';
-  var _enteredUsername = 'haseop';
 
   @override
   void dispose() {
@@ -42,16 +39,14 @@ class _AuthScreenState extends State<AuthScreen> {
   void _submit() async {
     var isValid = _form.currentState!.validate();
 
-    if (!isValid || !_isLogin) {
+    if (!isValid || !_isLogin && _selectedImage == null) {
       print('validate error isValid: ${isValid}, isLogin: ${_isLogin}, selectedImage: ${_selectedImage}' +
-          ', _username: ${_enteredUsername}, _email: ${_enteredEmail}, _password: ${_enteredPassword}');
+          ', _username: ${_usernameController}, _email: ${_emailController}, _password: ${_passwordController}');
       // error 메시지
       return;
     }
 
     _form.currentState!.save();
-    print(_enteredEmail);
-    print(_enteredPassword);
 
     try {
       setState(() {
@@ -60,11 +55,11 @@ class _AuthScreenState extends State<AuthScreen> {
       if (_isLogin) {
         print('login success');
         var userCredentials = _firebase.signInWithEmailAndPassword(
-            email: _enteredEmail, password: _enteredPassword);
+            email: _emailController.text, password: _passwordController.text);
         print(userCredentials.toString());
       } else {
         var userCredentials = await _firebase.createUserWithEmailAndPassword(
-            email: _enteredEmail, password: _enteredPassword);
+            email: _emailController.text, password: _passwordController.text);
         print(userCredentials.toString());
 
         var storageRef = FirebaseStorage.instance
@@ -79,8 +74,8 @@ class _AuthScreenState extends State<AuthScreen> {
             .collection('users')
             .doc(userCredentials.user!.uid)
             .set({
-          'username': _enteredUsername,
-          'email': _enteredEmail,
+          'username': _usernameController.text,
+          'email': _emailController.text,
           'image_url': url,
         });
       }
@@ -150,7 +145,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               return null;
                             },
                             onSaved: (value) {
-                              _enteredEmail = value!;
+                              _emailController.text = value!;
                             },
                           ),
                           if (!_isLogin)
@@ -169,7 +164,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 return null;
                               },
                               onSaved: (value) {
-                                _enteredUsername = value!;
+                                _usernameController.text = value!;
                               },
                             ),
                           TextFormField(
@@ -185,7 +180,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               return null;
                             },
                             onSaved: (value) {
-                              _enteredPassword = value!;
+                              _passwordController.text = value!;
                             },
                           ),
                           const SizedBox(
