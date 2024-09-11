@@ -1,3 +1,11 @@
+# firebase
+firebase.json
+**/android/app/google-services.json
+**/ios/Runner/GoogleService-info.plist
+**/lib/firebase_options.dart
+**/macos/Runner/GoogleService-info.plist
+
+
 #assets/config/
 
 # Do not remove or rename entries in this file, only add new ones
@@ -139,9 +147,3 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 !.vscode/settings.json
 
-# firebase
-firebase.json
-**/android/app/google-services.json
-**/ios/Runner/GoogleService-info.plist
-**/lib/firebase_options.dart
-**/macos/Runner/GoogleService-info.plist
