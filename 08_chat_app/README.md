@@ -11,12 +11,3 @@ firebase에 로그인 상태에서 아래의 명령어를 입력하면 flutter f
 ``` flutter
 flutterfire configure
 ``
-![alt text](./docs/image01.png)
-
-firebase 설정과 관련하여 아래와 같이 파일을 추가해야 한다.
-
-firebase.json
-**/android/app/google-services.json
-**/ios/Runner/GoogleService-info.plist
-**/lib/firebase_options.dart
-**/macos/Runner/GoogleService-info.plist
